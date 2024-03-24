@@ -25,11 +25,11 @@ public class DaoIntegrationTest {
         assertThat(author).isNotNull();
     }
     
-    // @Test
-    // void test_author_findbyname() {
-    //     Author author = authorDao.findAuthorByName("Craig", "Walls");
-    //     assertThat(author).isNotNull();
-    // }
+    @Test
+    void test_author_findbyname() {
+        Author author = authorDao.findAuthorByName("Craig", "Walls");
+        assertThat(author).isNotNull();
+    }
 
     @Test
     void test_author_savenew() {
