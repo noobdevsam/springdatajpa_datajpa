@@ -63,5 +63,11 @@ public class BookRepoTest {
         var book = bookRepo.findBookByTitleWithQuery("Clean Code");
         assertNotNull(book);
     }
+
+    @Test
+    void test_named_query() {
+        var book = bookRepo.findBookByTitleWithNamedQuery("Clean Code");
+        assertNotNull(book);
+    }
 }
  
