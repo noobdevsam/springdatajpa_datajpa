@@ -1,8 +1,11 @@
 package com.example.springdatajpa_datajpa;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
@@ -46,6 +49,13 @@ public class BookRepoTest {
             count.incrementAndGet();
         });
         assertThat(count.get()).isGreaterThan(4);
+    }
+
+    @Test
+    void test_async_query() throws InterruptedException, ExecutionException {
+        var futureBook = bookRepo.queryByTitle("Clean Code");
+        var book = futureBook.get();
+        assertNotNull(book);
     }
 }
  
