@@ -57,5 +57,11 @@ public class BookRepoTest {
         var book = futureBook.get();
         assertNotNull(book);
     }
+
+    @Test
+    void test_query_annotation() {
+        var book = bookRepo.findBookByTitleWithQuery("Clean Code");
+        assertNotNull(book);
+    }
 }
  
