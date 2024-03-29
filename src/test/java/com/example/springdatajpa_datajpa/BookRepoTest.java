@@ -72,7 +72,7 @@ public class BookRepoTest {
 
     @Test
     void test_native_query() {
-        var book = bookRepo.findBookByTitleWithNamedQuery("Clean Code");
+        var book = bookRepo.findBookByTitleWithNativeQuery("Clean Code");
         assertNotNull(book);
     }
 }
