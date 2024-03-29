@@ -2,6 +2,8 @@ package com.example.springdatajpa_datajpa;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,15 @@ public class BookRepoTest {
         assertThrows(EmptyResultDataAccessException.class, () -> {
             var book = bookRepo.readByTitle("bar");
         });
-        // this test will fail
+    }
+
+    @Test
+    void test_jpa_with_stream() {
+        var count = new AtomicInteger();
+        bookRepo.findAllByTitleNotNull().forEach((book) -> {
+            count.incrementAndGet();
+        });
+        assertThat(count.get()).isGreaterThan(4);
     }
 }
  
