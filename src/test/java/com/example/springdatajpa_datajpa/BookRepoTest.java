@@ -75,5 +75,11 @@ public class BookRepoTest {
         var book = bookRepo.findBookByTitleWithNativeQuery("Clean Code");
         assertNotNull(book);
     }
+
+    @Test
+    void test_named_jpa_query() {
+        var book = bookRepo.jpaNamed("Clean Code");
+        assertNotNull(book);
+    }
 }
  
