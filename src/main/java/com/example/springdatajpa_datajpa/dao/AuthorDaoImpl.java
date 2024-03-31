@@ -17,7 +17,7 @@ public class AuthorDaoImpl implements AuthorDao{
     @SuppressWarnings("null")
     @Override
     public Author getById(Long id) {
-        return authorRepo.findById(id).orElseGet(null);
+        return authorRepo.findById(id).get();
     }
 
     @Override
