@@ -1,5 +1,7 @@
 package com.example.springdatajpa_datajpa.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.example.springdatajpa_datajpa.model.Book;
 
@@ -9,6 +11,11 @@ public class BookDaoJdbcTemplate implements BookDao{
 
     public BookDaoJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    @Override
+    public List<Book> findAllBooks() {
+        return jdbcTemplate.query("select * from book", getBookMapper());
     }
 
     @Override

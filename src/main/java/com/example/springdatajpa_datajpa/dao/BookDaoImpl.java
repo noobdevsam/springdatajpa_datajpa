@@ -1,5 +1,7 @@
 package com.example.springdatajpa_datajpa.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +49,12 @@ public class BookDaoImpl implements BookDao {
         found.setAuthorId(book.getAuthorId());
         return bookRepo.save(found);
     }
+
+    @Override
+    public List<Book> findAllBooks() {
+        return null;
+    }
+
+    
     
 }

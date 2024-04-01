@@ -3,6 +3,8 @@ package com.example.springdatajpa_datajpa.dao;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +83,13 @@ public class BookDaoJdbcTemplateTest {
         assertThrows(EmptyResultDataAccessException.class, () -> {
             bookDao.getById(saved.getId());
         });
+    }
+
+    @Test
+    void test_find_all_books() {
+        List<Book> books = bookDao.findAllBooks();
+        assertThat(books).isNotNull();
+        assertThat(books.size()).isGreaterThan(4);
     }
     
 }
