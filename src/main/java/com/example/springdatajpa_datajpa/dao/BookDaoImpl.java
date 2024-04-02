@@ -66,4 +66,10 @@ public class BookDaoImpl implements BookDao {
         return null;
     }
 
+    @Override
+    public List<Book> findAllBooksSortByTitle(Pageable pageable) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
