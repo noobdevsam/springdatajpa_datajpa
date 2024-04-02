@@ -2,6 +2,7 @@ package com.example.springdatajpa_datajpa.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.example.springdatajpa_datajpa.model.Book;
 
@@ -21,6 +22,11 @@ public class BookDaoJdbcTemplate implements BookDao{
     @Override
     public List<Book> findAllBooks(int pageSize, int offset) {
         return jdbcTemplate.query("select * from book limit ? offset ?", getBookMapper(), pageSize, offset);
+    }
+
+    @Override
+    public List<Book> findAllBooks(Pageable pageable) {
+        return jdbcTemplate.query("select * from book limit ? offset ?", getBookMapper(), pageable.getPageSize(), pageable.getOffset());
     }
 
     @Override
