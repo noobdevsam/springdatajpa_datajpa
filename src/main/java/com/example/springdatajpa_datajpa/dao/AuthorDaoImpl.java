@@ -1,7 +1,8 @@
 package com.example.springdatajpa_datajpa.dao;
 
+import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.example.springdatajpa_datajpa.model.Author;
 import com.example.springdatajpa_datajpa.repos.AuthorRepo;
 
@@ -22,6 +23,11 @@ public class AuthorDaoImpl implements AuthorDao{
     @Override
     public Author findAuthorByName(String firstName, String lastName) {
         return authorRepo.findAuthorByFirstNameAndLastName(firstName, lastName).orElseGet(null);
+    }
+
+    @Override
+    public List<Author> findAllAuthorsByLastName(String lastname, Pageable pageable) {
+        return null;
     }
 
     @Override
