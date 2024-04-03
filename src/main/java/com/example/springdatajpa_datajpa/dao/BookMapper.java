@@ -10,6 +10,7 @@ import com.example.springdatajpa_datajpa.model.Book;
 
 public class BookMapper implements RowMapper<Book>{
 
+    @SuppressWarnings("null")
     @Override
     @Nullable
     public Book mapRow(ResultSet arg0, int arg1) throws SQLException {

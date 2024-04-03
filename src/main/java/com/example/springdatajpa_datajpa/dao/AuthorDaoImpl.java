@@ -14,7 +14,6 @@ public class AuthorDaoImpl implements AuthorDao{
         this.authorRepo = authorRepo;
     }
 
-    @SuppressWarnings("null")
     @Override
     public Author getById(Long id) {
         return authorRepo.findById(id).get();
@@ -25,13 +24,11 @@ public class AuthorDaoImpl implements AuthorDao{
         return authorRepo.findAuthorByFirstNameAndLastName(firstName, lastName).orElseGet(null);
     }
 
-    @SuppressWarnings("null")
     @Override
     public Author saveNewAuthor(Author author) {
         return authorRepo.save(author);
     }
 
-    @SuppressWarnings("null")
     @Override
     public Author updateAuthor(Author author) {
         Author update = authorRepo.findById(author.getId()).get();
@@ -40,7 +37,6 @@ public class AuthorDaoImpl implements AuthorDao{
         return authorRepo.save(update);
     }
 
-    @SuppressWarnings("null")
     @Override
     public void deleteAuthorById(Long id) {
         authorRepo.deleteById(id);
