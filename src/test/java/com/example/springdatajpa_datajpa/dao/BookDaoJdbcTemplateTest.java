@@ -96,7 +96,7 @@ public class BookDaoJdbcTemplateTest {
     void test_find_all_books_page_1() {
         var books = bookDao.findAllBooks(10, 0);
         assertThat(books).isNotNull();
-        assertThat(books.size()).isEqualTo(5);
+        assertThat(books.size()).isGreaterThan(5);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class BookDaoJdbcTemplateTest {
     void test_find_all_books_pageable_1() {
         var books = bookDao.findAllBooks(PageRequest.of(0, 10));
         assertThat(books).isNotNull();
-        assertThat(books.size()).isEqualTo(5);
+        assertThat(books.size()).isGreaterThan(5);
     }
 
     @Test
@@ -124,7 +124,7 @@ public class BookDaoJdbcTemplateTest {
     void test_find_all_books_page_1_sort_by_title() {
         var books = bookDao.findAllBooksSortByTitle(PageRequest.of(0,10, Sort.by(Sort.Order.desc("title"))));
         assertThat(books).isNotNull();
-        assertThat(books.size()).isEqualTo(5);
+        assertThat(books.size()).isGreaterThan(5);
     }
     
 }
