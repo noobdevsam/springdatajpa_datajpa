@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import com.example.springdatajpa_datajpa.model.Book;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -48,18 +49,10 @@ public class BookDaoHibernateTest {
     }
 
     @Test
-    void testFindAllBooks2() {
-
-    }
-
-    @Test
-    void testFindAllBooks3() {
-
-    }
-
-    @Test
     void testFindAllBooksSortByTitle() {
-
+    	var books = bookDao.findAllBooksSortByTitle(PageRequest.of(0,10, Sort.by(Sort.Order.desc("title"))));
+    	assertThat(books).isNotNull();
+    	assertThat(books.size()).isGreaterThan(5);
     }
 
     @Test
