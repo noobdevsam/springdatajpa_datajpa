@@ -2,6 +2,7 @@ package com.example.springdatajpa_datajpa.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,17 +54,25 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> findAllBooks() {
-        return null;
+        return bookRepo.findAll();
     }
 
     @Override
     public List<Book> findAllBooks(int pageSize, int offset) {
-        return null;
+        Pageable pageable = PageRequest.ofSize(pageSize);
+
+        if (offset > 0) {
+            pageable = pageable.withPage(offset/pageSize);
+        } else {
+            pageable = pageable.withPage(0);
+        }
+
+        return this.findAllBooks(pageable);
     }
 
     @Override
     public List<Book> findAllBooks(Pageable pageable) {
-        return null;
+        return bookRepo.findAll(pageable).getContent();
     }
 
     @Override
