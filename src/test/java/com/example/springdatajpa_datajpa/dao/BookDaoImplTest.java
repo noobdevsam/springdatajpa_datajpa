@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageRequest;
-// import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 
 import com.example.springdatajpa_datajpa.model.Book;
@@ -111,10 +111,10 @@ public class BookDaoImplTest {
         assertThat(books.size()).isEqualTo(0);
     }
 
-    // @Test
-    // void test_find_all_books_page_1_sort_by_title() {
-    //     var books = bookDao.findAllBooksSortByTitle(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("title"))));
-    //     assertThat(books).isNotNull();
-    //     assertThat(books.size()).isGreaterThan(5);
-    // }
+    @Test
+    void test_find_all_books_page_1_sort_by_title() {
+        var books = bookDao.findAllBooksSortByTitle(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("title"))));
+        assertThat(books).isNotNull();
+        assertThat(books.size()).isGreaterThan(5);
+    }
 }
